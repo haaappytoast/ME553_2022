@@ -22,7 +22,13 @@ int main(int argc, char* argv[]) {
 
   // a1 configuration
   Eigen::VectorXd jointNominalConfig(a1->getGeneralizedCoordinateDim());
-  jointNominalConfig << 0, 0, 0.54, 1.0, 0.0, 0.0, 0.0, 0.03, 0.4, -0.8, -0.03, 0.4, -0.8, 0.03, -0.4, 0.8, -0.03, -0.4, 0.8;
+  //(r_x, r_y, r_z / 
+  // q_w, q_x, q_y, q_z / 
+  // FR_hip, FR_thigh, FR_calf / 
+  // FL_hip, FL_thigh, FL_calf / 
+  // RR_hip, RR_thigh, RR_calf / 
+  // RL_hip, L_thigh, LR_calf)
+  jointNominalConfig << 0, 0, 0.54, 1.0, 0.0, 0.0, 0.0, 0.03, 0.4, -0.8, -0.03, 0.4, -0.8, 0.03, -0.4, 0.8, -0.03, -0.4, -0.8;
   a1->setGeneralizedCoordinate(jointNominalConfig);
 
   // debug sphere
