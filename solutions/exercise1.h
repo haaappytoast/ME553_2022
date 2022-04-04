@@ -40,10 +40,22 @@ inline Eigen::Vector3d getEndEffectorPosition (const Eigen::VectorXd& gc) {
   Eigen::Vector3d r_root_ee = r_root_hip + R_root_hip * r_hip_ee;
   r_world_ee = r_world_root + R_world_root * r_root_ee;
   
-Eigen::Vector3d r_world_hip = r_world_root + R_world_root * r_root_hip;
+  /* just added for debugging
+  /// Forward Kinematics
+  // world to hip
+  Eigen::Vector3d r_world_hip = r_world_root + R_world_root * r_root_hip;
 
+  // world to thigh
+  Eigen::Vector3d r_world_thigh = r_world_root + R_world_root * (r_root_hip + (R_root_hip * r_hip_thigh));
 
-  return r_world_hip;
+  // world to calf
+  Eigen::Vector3d r_world_calf = r_world_root + R_world_root * (r_root_hip + (R_root_hip * (r_hip_thigh + R_hip_thigh * r_thigh_calf)));
+
+  // world to ee
+  Eigen::Vector3d r_world_ee = r_world_root + R_world_root * (r_root_hip + R_root_hip * (r_hip_thigh + R_hip_thigh * ((r_thigh_calf + R_thigh_calf * (r_calf_ee)))));
+  */
+ 
+  return r_world_ee;
 }
 
 #endif //ME553_2022_SOLUTIONS_EXERCISE1_H_
